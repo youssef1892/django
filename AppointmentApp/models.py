@@ -21,9 +21,10 @@ class Appointment(models.Model):
     prescription = models.FileField(
         upload_to="prescriptions/", blank=True
     )
+    patient = models.ForeignKey(
+            "AccountApp.Patient", on_delete=models.CASCADE,related_name='appointments'
+        )
     doctor = models.ForeignKey(
         "AccountApp.Doctor", on_delete=models.CASCADE,related_name='appointments'
     )
-    patient = models.ForeignKey(
-        "AccountApp.Patient", on_delete=models.CASCADE,related_name='appointments'
-    )
+    
